@@ -16,7 +16,7 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<classpathMavenRepositoryLayout>true</classpathMavenRepositoryLayout>
+							<classpathLayoutType>repository</classpathLayoutType>
 							<classpathPrefix>../../../Users/ploser128/.m2/repository</classpathPrefix>
 							<mainClass>com.mycompany.app.App</mainClass>
 						</manifest>
