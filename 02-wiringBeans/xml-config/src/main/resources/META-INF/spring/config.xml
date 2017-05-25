@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util 
+		http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<!-- 
+	<bean class="com.mycompany.app.SgtPepers" />
+	Bean will be named according to the fully qualified class name -->
+	<bean id="compactDisc" class="com.mycompany.app.SgtPeppers" />
+
+	<!-- using 'constructor-arg' for DI-->
+	<bean id="cdPlayer" class="com.mycompany.app.CDPlayer">
+		<constructor-arg ref="compactDisc" />
+	</bean>
+
+	<!-- alternative: for this to work the property
+		xmlns:c="http://www.springframework.org/schema/c" must be added to the main 'beans' tag -->
+	<!--
+	<bean id="cdPlayer" class="com.mycompany.app.CDPlayer"
+		c:cd-ref="compactDisc" />
+	-->
+
+	<!-- 'c'=c-namespace prefix, 'cd'=constructor argument name,
+		'-ref'=injecting a bean reference, '"compactDisc"'=the ID of the bean to inject -->
+
+	<!-- same result with refering to constructor parameter by location in parameters list
+	<bean id="cdPlayer" class="com.mycompany.app.CDPlayer"
+		c:_0-ref="compactDisc" /> -->
+
+	<!-- same result for a single parameter constructor
+	<bean id="cdPlayer" class="com.mycompany.app.CDPlayer"
+		c:_-ref="compactDisc" /> -->
+
+	<bean id="metalDisc" class="com.mycompany.app.BlankDisc">
+		<constructor-arg value="Incurso" />
+		<constructor-arg value="Spawn Of Possession" />
+	</bean>
+
+	<!-- using c-namespace attribute instead 
+	
+	<bean id="metalDisc" class="com.mycompany.app.BlankDisc"
+		c:title="Incurso" c:artist="Spawn Of Possession" />
+		
+		OR
+	<bean id="metalDisc" class="com.mycompany.app.BlankDisc"
+		c:_0="Incurso" c:_1="Spawn Of Possession" />
+	
+	-->
+
+	<bean id="IncursoCD" class="com.mycompany.app.RealBlankDisc">
+		<constructor-arg value="Incurso" />
+		<constructor-arg value="Spawn Of Possession" />
+		<constructor-arg>
+			<list>
+				<value>Where Angels Go Demons Follow</value>
+				<value>A Graven Image</value>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<!-- example of passing a list of beans for the following constructor
+	public Discography(String artist, List<CompactDisc> cds) {...}
+	<bean id="beatlesDiscography" class="com.mycompany.app.Discography">
+		<constructor-arg value="The Beatles" />
+		<constructor-arg>
+			<list>
+				<ref bean="sgtPeppers" />
+				<ref bean="whiteAlbumm" />
+				<ref bean="hardDaysNight" />
+				<ref bean="revolver" />
+			</list>
+		</constructor-arg>
+	</bean>
+	-->
+
+	<!-- in previous examples <list> can be substituted for <set> -->
+	<!-- Spring will create the collection either as List or Set -->
+	<!-- If <set> is used duplicate values will be discarded and the ordering may not be honored -->
+	<!-- either <list> and <set> can be wired into List, Set or Array -->
+
+
+
+	<!--_____________________________________________________________________________________
+	_________________________________________________________________________________________
+	____ Now injecting dependencies into properties instead of constructor __________________
+	_________________________________________________________________________________________
+	_____________________________________________________________________________________ -->
+
+
+	<!-- injected into @Autowired annotated method of 'cdPlayer' bean -->
+	<bean id="metalMusicCD" class="com.mycompany.components.Incurso" /> 
+
+
+	<!-- used to inject bean 'metalDisc' into 'metalCD' property of 'metalCdPlayer' bean -->
+	<!-- to inject a reference or value into property, a proper setter must be available -->
+	<bean id="metalCdPlayer" class="com.mycompany.app.MetalCdPlayer">
+		<property name="metalCD" ref="metalDisc" /> 
+	</bean> 
+
+	<!-- alternative: for this to work the property
+		xmlns:p="http://www.springframework.org/schema/p" must be added to the main 'beans' tag -->
+	<!--
+	<bean id="metalCdPlayer" class="com.mycompany.app.MetalCdPlayer"
+		p:metalCD-ref="metalDisc" />
+	-->
+
+	<!-- must have setters -->
+	<bean id="anotherRealBlankDisc" class="com.mycompany.app.RealBlankDisc">
+		<property name="title" value="some title" />
+		<property name="artist" value="some artist" />
+		<property name="tracks">
+			<list>
+				<value>track no.01</value>
+				<value>track no.02</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- alternative: using 'p' namespace 
+	<bean id="anotherRealBlankDisc" class="com.mycompany.app.RealBlankDisc"
+		p:title="some title" p:artist="some artist">
+		<property name="tracks">
+			<list>
+				<value>track no.01</value>
+				<value>track no.02</value>
+			</list>
+		</property>
+	</bean>
+	-->
+
+	<!-- using 'util' namespace we are able to create a list bean -->
+	<util:list id="track list">
+		<value>track no.01</value>
+		<value>track no.02</value>
+	</util:list>
+	
+	<!-- using track 'track list' bean, p-namespace alternative above can be rewritten 
+	<bean id="anotherRealBlankDisc" class="com.mycompany.app.RealBlankDisc"
+		p:title="some title" p:artist="some artist" p:tracks-ref="track list" />
+	-->
+
+</beans>
