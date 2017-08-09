@@ -9,8 +9,8 @@ public class App
    	{
 		ApplicationContext context = new AnnotationConfigApplicationContext(JavaConfig.class);
 
-		InterfaceX x1 = (InterfaceX) context.getBean(Ability.class);
-		x1.doTheOldThing();
-		//x1.doTheNewThing();
+		Object obj = context.getBean(InterfaceX.class);
+		((InterfaceX) obj).doTheOldThing();
+		((Ability) obj).doTheNewThing();
 	}
 }
