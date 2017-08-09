@@ -1,12 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.mycompany.app</groupId>
-	<artifactId>creating-annotated-aspects</artifactId>
+
+	<groupId>beantest</groupId>
+	<artifactId>cglib-example</artifactId>
+	<version>1.0</version>
 	<packaging>jar</packaging>
-	<version>1.0-SNAPSHOT</version>
-	<name>creating-annotated-aspects</name>
+
+	<name>cglib-example</name>
 	<url>http://maven.apache.org</url>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -17,8 +20,8 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathLayoutType>repository</classpathLayoutType>
-							<classpathPrefix>../../../../Users/ploser128/.m2/repository</classpathPrefix>
-							<mainClass>com.mycompany.app.App</mainClass>
+							<classpathPrefix>/home/ploser128/.m2/repository</classpathPrefix>
+							<mainClass>beantest.App</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
@@ -52,10 +55,10 @@
 			<artifactId>spring-test</artifactId>
 			<version>4.3.8.RELEASE</version>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib</artifactId>
 			<version>3.2.5</version>
-		</dependency>
+		</dependency>-->
 	</dependencies>
 </project>
