@@ -1,4 +1,4 @@
-package beantest;
+package com.mycompany.app;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -6,20 +6,15 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
 @EnableAspectJAutoProxy
-public class JavaConfig{
+public class JavaConfig {
 	
-	@Bean 
-	public ClassAAA aaa(){
-		return new ClassAAA();
-	}	
-
 	@Bean
-	public ClassBBB bbb(){
-		return new ClassBBB();
+	public ClassA classA(){
+		return new ClassA();
 	}
 
 	@Bean
-	public Aspect1 aspect1(){
-		return new Aspect1();
+	public TheIntroducer introducer(){
+		return new TheIntroducer();
 	}
 }
