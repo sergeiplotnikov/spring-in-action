@@ -8,6 +8,8 @@
 	<body>
 		<h1>Register</h1>
 		<form method="POST">
+		<!-- form tag has no 'action' attribute, meaning it will POST the-->
+		<!-- data to the same url that displayed the page -->
 			First Name: <input type="text" name="firstName" /><br/>
 			Last Name: <input type="text" name="lastName" /><br/>
 			Username: <input type="text" name="username" /><br/>
