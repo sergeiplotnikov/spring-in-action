@@ -13,5 +13,8 @@ import spittr.data.SpittleRepository;
 @Configuration
 @ComponentScan (basePackages={"spitter"}, excludeFilters={@Filter(type=FilterType.ANNOTATION, value=EnableWebMvc.class)})
 public class RootConfig {
-	
+	@Bean
+	public SpittleRepository getSpittleRepo(){
+		return new spittr.data.SpittleRepositoryImpl();
+	}
 }
