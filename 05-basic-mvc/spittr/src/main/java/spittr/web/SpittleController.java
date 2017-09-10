@@ -23,7 +23,8 @@ public class SpittleController {
 	public SpittleController(SpittleRepository repo){
 		spittleRepo = repo;
 	}
-/*
+
+	/*
 	@RequestMapping(method=RequestMethod.GET)
 	public String spittles (Model model) {
 		//model.addAttribute("spittleList", spittleRepo.findSpittles(Long.MAX_VALUE, 20));
@@ -33,24 +34,24 @@ public class SpittleController {
 		return "spittles";
 	}
 
-	@RequestMapping(method=RequestMethod.GET)
-	public String spittles (Map model) {
-		model.put("spittleList", spittleRepo.findSpittles(Long.MAX_VALUE, 20));
-		return "spittles";
-	} 
+        @RequestMapping(method=RequestMethod.GET)
+        public String spittles (Map model) {
+            model.put("spittleList", spittleRepo.findSpittles(Long.MAX_VALUE, 20));
+            return "spittles";
+        }
 
-	@RequestMapping(method=RequestMethod.GET)
-	public List<Spittle> spittles(){
-		return spittleRepo.findSpittles(Long.MAX_VALUE, 20);
-	}
-	// Spring in Action, 4th ed:
-	// 	When a handler method returns an object or a collection like this,
-	// the value returned is put into the model, and the model key is inferred
-	// from its type (spittleList).
-	// 	As for the logical view name, its inferred from the request path.
-	// Because this method handles GET requestst for /spittles, the view name is spittles.
+        @RequestMapping(method=RequestMethod.GET)
+        public List<Spittle> spittles(){
+            return spittleRepo.findSpittles(Long.MAX_VALUE, 20);
+        }
+        // Spring in Action, 4th ed:
+        // 	When a handler method returns an object or a collection like this,
+        // the value returned is put into the model, and the model key is inferred
+        // from its type (spittleList).
+        // 	As for the logical view name, its inferred from the request path.
+        // Because this method handles GET requestst for /spittles, the view name is spittles.
 
-*/
+    */
 	// Adding the ability for the user to pass data with request
 	@RequestMapping(method=RequestMethod.GET)
 	public List<Spittle> spittles(
@@ -59,6 +60,7 @@ public class SpittleController {
 			
 			return spittleRepo.findSpittles(max, count);
 	}
+
 
 	@RequestMapping(value="/{spittleId}", method=RequestMethod.GET)
 	public String spittle(@PathVariable("spittleId") long spittleId, Model model){
