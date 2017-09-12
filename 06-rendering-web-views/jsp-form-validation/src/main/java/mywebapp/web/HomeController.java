@@ -10,7 +10,7 @@ public class HomeController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(ModelMap model){
-        model.addAttribute("message", "my message in model");
+        model.addAttribute("message", "Spring MVC XML Config Example");
         return "home";
     }
 

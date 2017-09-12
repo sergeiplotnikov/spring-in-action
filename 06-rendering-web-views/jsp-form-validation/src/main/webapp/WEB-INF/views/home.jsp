@@ -8,5 +8,7 @@
 <h2>Hello World!</h2>
 <c:out value="${message}" />
 <br>${message}<br>
+<br><br>
+<h3>go to 127.0.0.1:8080/user</h3>
 </body>
 </html>
