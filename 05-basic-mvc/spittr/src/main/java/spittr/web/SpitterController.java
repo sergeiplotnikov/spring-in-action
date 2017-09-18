@@ -16,7 +16,7 @@ import org.springframework.validation.Errors;
 @Controller
 @RequestMapping("/spitter")
 public class SpitterController {
-
+/**/
 	private SpitterRepository spitterRepo;
 	
 	@Autowired
@@ -43,4 +43,5 @@ public class SpitterController {
 	public String showRegistrationForm() {
 		return "registerForm";
 	}
+
 }
