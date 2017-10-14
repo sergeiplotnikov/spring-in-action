@@ -5,9 +5,9 @@
 	
 <tiles-definitions>
 	
-	<definition name="embedded*" extends="standardLayout">
-		<put-attribute name="title" value="Welcome" />
-		<put-attribute name="body" value="/WEB-INF/flows/embedded{1}.jsp" />
+	<definition name="embeddedFlowContainer" extends="standardLayout">
+		<put-attribute name="title" value="THIS IS THE TITLE!!!!!!!" />
+		<put-attribute name="body" value="/WEB-INF/flows/embeddedFlowContainer.jsp" />
 	</definition>
 	
 </tiles-definitions>

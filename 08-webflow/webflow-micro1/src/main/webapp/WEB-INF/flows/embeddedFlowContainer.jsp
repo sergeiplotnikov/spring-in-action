@@ -11,8 +11,8 @@
 	</div>
 	<div class="span-12 colborder">
 		<h3 class="alt">Embedded Flow Area</h3>
-		<div id="embeddedFlow">
-			<a id="startFlow" href="embedded-flow">Start Embedded Flow</a>
+		<div id="embeddedXflow">
+			<a id="startFlow" href="embedded-xflow">Start Embedded Flow</a>
 			<script type="text/javascript">
 				Spring.addDecoration(new Spring.AjaxEventDecoration({elementId:"startFlow",event:"onclick",params:{fragments:"body",mode:"embedded"}}));
 			</script>

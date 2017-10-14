@@ -4,7 +4,7 @@
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/webflow 
 		http://www.springframework.org/schema/webflow/spring-webflow.xsd">
-
+<!--
 	<view-state id="step1" view="embeddedFlow/step1">
 		<transition on="next" to="step2"/> 
 		<transition on="cancel" to="cancel"/>
@@ -19,5 +19,19 @@
 	<end-state id="success" view="embeddedFlow/success"/>
 
 	<end-state id="cancel" view="embeddedFlow/cancel"/>
+-->
+	<view-state id="step1" view="embeddedXflow/step1">
+		<transition on="next" to="step2"/> 
+		<transition on="cancel" to="cancel"/>
+	</view-state>
 
+	<view-state id="step2" view="embeddedXflow/step2">
+		<transition on="previous" to="step1"/>
+		<transition on="finish" to="success"/>
+		<transition on="cancel" to="cancel"/>
+	</view-state>
+
+	<end-state id="success" view="embeddedXflow/success"/>
+
+	<end-state id="cancel" view="embeddedXflow/cancel"/>
 </flow>

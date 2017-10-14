@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+	
+<tiles-definitions>
+<!--
+	<definition name="embeddedFlow/*" extends="standardLayout">
+		<put-attribute name="body" value="/WEB-INF/flows/embedded-flow/{1}.jsp" />
+	</definition>
+-->
+	<definition name="embeddedXflow/cancel" extends="standardLayout">
+		<put-attribute name="body" value="/WEB-INF/flows/embedded-xflow/cancel.jsp" />
+	</definition>
+	<definition name="embeddedXflow/step1" extends="standardLayout">
+		<put-attribute name="body" value="/WEB-INF/flows/embedded-xflow/step1.jsp" />
+	</definition>
+	<definition name="embeddedXflow/step2" extends="standardLayout">
+		<put-attribute name="body" value="/WEB-INF/flows/embedded-xflow/step2.jsp" />
+	</definition>
+	<definition name="embeddedXflow/success" extends="standardLayout">
+		<put-attribute name="body" value="/WEB-INF/flows/embedded-xflow/success.jsp" />
+	</definition>
+</tiles-definitions>

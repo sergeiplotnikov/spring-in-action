@@ -1,4 +1,4 @@
-<div id="embeddedFlow">
+<div id="embeddedXflow">
 	<p class="notice">This is step 2 of the embedded flow</p>
 	<form id="step2" action="${flowExecutionUrl}" method="POST">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
