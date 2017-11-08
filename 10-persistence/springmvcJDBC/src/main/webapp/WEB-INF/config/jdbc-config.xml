@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	   xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+                           http://www.springframework.org/schema/jdbc
+                           http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd">
+<!--                           
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+          p:driverClassName="org.mariadb.jdbc.Driver"
+          p:url="jdbc:mariadb://localhost:3306/DATABASE_NAME_GOES_HERE"
+          p:username="USERNAME_GOES_HERE"
+          p:password="PASSWORD_GOES_HERE"
+          p:initialSize="5"
+          p:maxTotal="10" />
+-->
+
+    <jdbc:embedded-database id="dataSource" type="H2">
+        <jdbc:script location="classpath:sqlscripts/schema.sql" />
+        <jdbc:script location="classpath:sqlscripts/insert-data.sql" />
+    </jdbc:embedded-database>
+
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+          c:_0-ref="dataSource" />
+
+    <bean id="userDao" class="com.mycompany.dao.jdbc.UserDaoJdbc"
+          c:_0-ref="jdbcTemplate" />
+
+</beans>
